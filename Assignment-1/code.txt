@@ -1,0 +1,64 @@
+int pin;
+void setup()
+{
+  for(int pin=2; pin<=13; pin++){
+  	pinMode(pin, OUTPUT);
+  }
+
+}
+
+void loop()
+{
+ 
+  //J1 green
+  digitalWrite(10, HIGH);	//red
+  digitalWrite(7, HIGH);	//red
+  digitalWrite(4, HIGH);	//red
+  digitalWrite(11, HIGH);	//green
+  delay(6000);
+  
+  // green -> yellow
+  digitalWrite(11, LOW);	// green off
+  digitalWrite(12, HIGH);	// yellow
+  delay(3000);
+  
+  //J2 green
+  digitalWrite(12, LOW);	//yellow off
+  digitalWrite(13, HIGH);	//red
+  digitalWrite(10, LOW);	//red off
+  digitalWrite(8, HIGH);	//green
+  delay(6000);
+  
+  //green -> yellow
+  digitalWrite(8, LOW);		//green off
+  digitalWrite(9, HIGH);	//yellow
+  delay(3000);
+  
+  //J3 green
+  digitalWrite(9, LOW);		//yellow off
+  digitalWrite(10, HIGH);	//red
+  digitalWrite(7, LOW);		//red off
+  digitalWrite(5, HIGH);	//green
+  delay(6000);
+  
+  //green -> yellow
+  digitalWrite(5, LOW);		//green off
+  digitalWrite(6, HIGH);	//yellow
+  delay(3000);
+  
+  //J4 green
+  digitalWrite(6, LOW);		//yellow off
+  digitalWrite(7, HIGH);	//red
+  digitalWrite(4, LOW);		//red off
+  digitalWrite(2, HIGH);	//green
+  delay(6000);
+  
+  //green -> yellow
+  digitalWrite(2, LOW);		//green off
+  digitalWrite(3, HIGH);	//yellow
+  delay(3000);
+  
+  digitalWrite(3, LOW);		//yellow off
+  digitalWrite(13, LOW);    //red off
+  digitalWrite(4, HIGH);  	//red
+}

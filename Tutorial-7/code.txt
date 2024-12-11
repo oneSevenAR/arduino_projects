@@ -1,0 +1,16 @@
+int ledPin = 9;
+int bright1=0, bright2 =30, bright3=255;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  analogWrite(ledPin, bright1);
+  delay(500);
+  analogWrite(ledPin, bright2);
+  delay(500);
+  analogWrite(ledPin, bright3);
+  delay(1000);
+}
+
