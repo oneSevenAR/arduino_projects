@@ -1,0 +1,23 @@
+float radius=2.0, pi=3.141592653;
+float area;
+int delayTime = 750;
+String s1="A circle with radius ";
+String s2=" has an area of ";
+
+
+void setup()
+{
+ 
+  Serial.begin(115200);
+}
+
+void loop()
+{
+  area = pi*radius*radius;
+  Serial.print(s1);
+  Serial.print(radius);
+  Serial.print(s2);
+  Serial.println(area);
+  delay(delayTime);
+  radius += 1;
+}
