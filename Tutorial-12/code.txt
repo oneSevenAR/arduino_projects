@@ -1,0 +1,31 @@
+int myVoltPin=A2;
+int readVal;
+float V2;
+int redPin=9;
+
+void setup()
+{
+  pinMode(myVoltPin, INPUT);
+  pinMode(redPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  readVal = analogRead(myVoltPin);
+  V2 = (5./1023.)*readVal;
+  
+  if (V2 >= 3.99){ // allow a small margin
+
+    Serial.print("TOO HIGH VOLTAGE. Value is : ");
+    Serial.println(V2);
+  	digitalWrite(redPin, HIGH);
+  }
+  else{
+    Serial.print("Voltage is :");
+    Serial.println(V2);
+  	digitalWrite(redPin, LOW);
+    
+  }
+  delay(100);
+}
