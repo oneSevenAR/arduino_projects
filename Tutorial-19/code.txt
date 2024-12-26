@@ -1,0 +1,43 @@
+String msg = "which one to turn on? r/g/b : ";
+String ledName;
+String msg2 = "this led is on -> ";
+int redPin = 8, greenPin = 9, bluePin = 10;
+int delayTime = 2000;
+void setup()
+{
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  Serial.println(msg);
+  while(Serial.available() == 0){
+  	
+  }
+  ledName = Serial.readString();
+  if(ledName == "r"){
+  	digitalWrite(redPin, HIGH);
+    Serial.print(msg2);
+  	Serial.println(ledName);
+    digitalWrite(greenPin, LOW);
+    digitalWrite(bluePin, LOW);
+  }
+  if(ledName == "g"){
+  	digitalWrite(greenPin, HIGH);
+    Serial.print(msg2);
+  	Serial.println(ledName);
+    digitalWrite(redPin, LOW);
+    digitalWrite(bluePin, LOW);
+  }
+  if(ledName == "b"){
+  	digitalWrite(bluePin, HIGH);
+    Serial.print(msg2);
+  	Serial.println(ledName);
+    digitalWrite(greenPin, LOW);
+    digitalWrite(redPin, LOW);
+  }
+
+}  
