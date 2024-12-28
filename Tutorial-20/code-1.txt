@@ -1,0 +1,42 @@
+int redPin =8;
+int greenPin =9;
+int bluePin =10;
+int r, g, b;
+String msg = "what color? : ";
+String msg2= "enter red value : ";
+String msg3= "enter green value : ";
+String msg4= "enter blue value : ";
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+}
+
+void loop()
+{
+  Serial.println(msg2);
+  while(Serial.available()==0){
+  
+  }
+  r = Serial.parseInt();
+  
+  Serial.println(msg3);
+  while(Serial.available()==0){
+  
+  }
+  g = Serial.parseInt();
+  
+  Serial.println(msg4);
+  while(Serial.available()==0){
+  
+  }
+  b = Serial.parseInt();
+  
+  digitalWrite(redPin, r);
+  digitalWrite(greenPin, g);
+  digitalWrite(bluePin, b);
+  
+  
+}

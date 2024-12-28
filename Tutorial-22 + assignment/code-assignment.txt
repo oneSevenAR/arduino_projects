@@ -1,0 +1,25 @@
+int potVal;
+int potPin = A0;
+int piePin = 9;
+int dt = 250;
+void setup()
+{
+  pinMode(piePin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  potVal = analogRead(potPin);
+  if(potVal>700){
+    Serial.print("too high : ");
+    Serial.println(potVal); 
+  	digitalWrite(piePin, HIGH);
+    delay(dt);
+  }
+  else{
+    Serial.println(potVal);
+  	digitalWrite(piePin, LOW);
+    delay(dt);
+  }
+}

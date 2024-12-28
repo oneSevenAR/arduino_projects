@@ -1,0 +1,25 @@
+int buzzPin = 8;
+int potVal;
+float dt;
+int potPin = A0;
+void setup()
+{
+  pinMode(buzzPin, OUTPUT);
+  Serial.begin(9600);
+  
+}
+
+void loop()
+{
+  potVal = analogRead(potPin);
+  dt = (9940./1023.)*(potVal) + 60;
+  
+  Serial.print(potVal);
+  Serial.print("->");
+  Serial.println(dt);
+  
+  digitalWrite(buzzPin, HIGH);
+  delayMicroseconds(dt);
+  digitalWrite(buzzPin, LOW);
+  delayMicroseconds(dt); 
+}

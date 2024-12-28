@@ -1,0 +1,24 @@
+int myNumb;
+int dt=2000;
+int buzzPin = 10;
+String msg = "input : ";
+
+void setup()
+{
+  pinMode(buzzPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  Serial.println(msg);
+  while(Serial.available()==0){
+  	
+  }
+  myNumb = Serial.parseInt();
+  if(myNumb>10){
+  	digitalWrite(buzzPin, HIGH);
+    delay(dt);
+    digitalWrite(buzzPin, LOW);
+  }
+}
