@@ -1,0 +1,26 @@
+int lightSource = A0;
+int lightVal;
+int delayVal = 250;
+float dt;
+int piePin = 6;
+void setup()
+{
+  pinMode(lightSource, INPUT);
+  pinMode(piePin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  
+  lightVal = analogRead(lightSource);
+  dt = (-9940./901)*(lightVal-934.44);
+  Serial.println(lightVal);
+  
+  
+  digitalWrite(piePin, HIGH);
+  delayMicroseconds(dt);
+  digitalWrite(piePin, LOW);
+  delayMicroseconds(dt);
+  
+}

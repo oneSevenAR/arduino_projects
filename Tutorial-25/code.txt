@@ -1,0 +1,28 @@
+int lightSource = A0;
+int lightVal;
+int delayVal = 250;
+int redPin = 12, greenPin = 13;
+void setup()
+{
+  pinMode(lightSource, INPUT);
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  lightVal = analogRead(lightSource);
+  Serial.println(lightVal);
+  delay(delayVal);
+  
+  if(lightVal<=465){
+  	digitalWrite(redPin, HIGH);
+    digitalWrite(greenPin, LOW);
+  }
+  else{
+  	digitalWrite(redPin, LOW);
+    digitalWrite(greenPin, HIGH);
+  }
+  
+}
