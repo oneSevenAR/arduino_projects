@@ -1,0 +1,28 @@
+#include <Servo.h>
+int servoPin = 9;
+int servoPosn;
+int lightPin=A0;
+int lightVal;
+
+Servo myServo;
+
+void setup()
+{
+  Serial.begin(9600);
+  myServo.attach(servoPin);
+  pinMode(lightPin, INPUT);
+  pinMode(servoPin, OUTPUT);
+}
+
+void loop()
+{
+  
+  lightVal = analogRead(lightPin);
+  servoPosn = (159./901.)*(lightVal);
+  myServo.write(servoPosn);
+  Serial.print(lightVal);
+  Serial.print(" || ");
+  Serial.println(servoPosn);
+  delay(100);
+  
+}

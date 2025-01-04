@@ -1,0 +1,23 @@
+int encoderPinA = 2;
+int encoderPinB = 3;
+volatile int encoderPos = 0;
+
+void setup() {
+  pinMode(encoderPinA, INPUT);
+  pinMode(encoderPinB, INPUT);
+  attachInterrupt(digitalPinToInterrupt(encoderPinA), readEncoder, CHANGE);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.print("Encoder Position: ");
+  Serial.println(encoderPos);
+  delay(500);
+}
+
+void readEncoder() {
+  int b = digitalRead(encoderPinB);
+  encoderPos += (b == HIGH) ? 1 : -1;
+}
+
