@@ -1,0 +1,62 @@
+int Xpin = A2;
+int Ypin = A3;
+int Spin = 2;
+
+int mSpeed;
+int speedPin = 5;
+int dir1 = 4;
+int dir2 = 3;
+
+int Xval, Yval, Sval;
+
+int dt = 200;
+
+
+void setup()
+{
+  pinMode(Xpin, INPUT);
+  pinMode(Ypin, INPUT);
+  pinMode(Spin, INPUT);
+  digitalWrite(Spin, HIGH);
+  pinMode(dir1, INPUT);
+  pinMode(dir2, INPUT);
+  pinMode(speedPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  //only X
+  Xval = analogRead(Xpin);
+  
+  if(Xval>511){
+    mSpeed = (255./511.)*Xval - 255;
+  	digitalWrite(dir1, HIGH);
+    digitalWrite(dir2, LOW);
+    analogWrite(speedPin, mSpeed);
+    Serial.print("speed : ");
+    Serial.print(mSpeed);
+    Serial.print(" || Xval : ");
+    Serial.println(Xval);
+  }
+  else if(Xval<511){
+    mSpeed = (-255./511.)*Xval + 255;
+  	digitalWrite(dir1, LOW);
+    digitalWrite(dir2, HIGH);
+    analogWrite(speedPin, mSpeed);
+    Serial.print("speed : ");
+    Serial.print(mSpeed);
+    Serial.print(" || Xval : ");
+    Serial.println(Xval);
+  }
+  else{
+  	digitalWrite(dir1, LOW);
+    digitalWrite(dir2, LOW);
+    analogWrite(speedPin, 0);
+    Serial.print("speed : 0");
+    
+    Serial.print(" || Xval : ");
+    Serial.println(Xval);
+  }
+  
+}
